@@ -1,0 +1,8 @@
+# ignore src
+
+.gitignore
+src/**/*
+node_modules/**/*
+test/**/*
+.npmignore
+.npmrc

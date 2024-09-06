@@ -1,0 +1,50 @@
+name: Release
+
+on:
+      workflow_dispatch:
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Specify your Node.js version
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Copy README.md to Component Directory
+        run: cp README.md component/README.md
+
+      - name: Install dependencies
+        run: |
+          cd component
+          npm install
+
+      - name: Build
+        run: |
+          cd component
+          npm run build # Adjust this command based on your setup
+
+      - name: Test
+        run: |
+            cd component
+            npm run test 
+
+      - name: Create Git tag
+        id: tag
+        run: |
+          VERSION=$(node -p "require('./component/package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          git tag -a "v$VERSION" -m "Package release"
+          git push origin "v$VERSION"
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.TSX_EXPRESS_NPM }} # Use your npm token here
+        run: |
+          cd component
+          npm publish

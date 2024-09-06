@@ -1,0 +1,54 @@
+{
+      "ts-node": {
+            "require": [
+                  "tsconfig-paths/register"
+            ]
+      },
+      "include": [
+            "src/**/*.ts",
+            "test/**/*.ts"
+      ],
+      "compilerOptions": {
+
+            "baseUrl": ".",
+            "rootDir": "./src",
+            "outDir": "dist",    
+
+            "module": "CommonJS",
+            "target": "ES2020",
+            "jsx": "react",
+
+            "allowJs": false,
+            "checkJs": false,
+            "strict": true,
+            "strictFunctionTypes": true,
+            "noImplicitReturns": true,
+            "incremental": false,
+
+            "sourceMap": true,
+            "resolveJsonModule": true,
+            "esModuleInterop": true,
+            "forceConsistentCasingInFileNames": true,  
+            "noImplicitAny": true, 
+            "strictNullChecks": true,  
+       
+            "alwaysStrict": true,  
+            "skipLibCheck": true, 
+            "declaration": true,
+            "declarationDir": "dist/types",
+            
+            "paths": {
+                  "tsx-express": [
+                        "../component/src"
+                  ],
+ 
+        }
+  }  ,   
+ "references": [
+      {
+            "path": "../component"
+      }
+  ],  
+
+}
+ 

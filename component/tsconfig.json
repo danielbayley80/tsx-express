@@ -1,0 +1,33 @@
+{
+      "ts-node": {
+            "require": [
+                  "tsconfig-paths/register"
+            ]
+      },
+      "include": ["src/**/*.ts", "src/test/mocks.tsx"],
+      "exclude": ["node_modules", "**/*.spec.ts"],
+      "compilerOptions": {
+            "baseUrl": ".",
+            "outDir": "dist",
+            "rootDir": "./src",
+  
+            "esModuleInterop": true,
+            "declaration": true,
+           "declarationDir": "dist/types",
+            "composite": true,
+            "declarationMap": true,
+            "jsx": "react",
+            //   "incremental": true,
+            "experimentalDecorators": true,
+            "module": "CommonJS",
+            "moduleResolution": "Node",
+            "sourceMap": true,
+            "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
+            "strict": true, /* Enable all strict type-checking options. */
+            "noImplicitAny": true, /* Enable error reporting for expressions and declarations with an implied `any` type.. */
+            "strictNullChecks": true, /* When type checking, take into account `null` and `undefined`. */
+            "strictFunctionTypes": true, /* When assigning functions, check to ensure parameters and the return values are subtype-compatible. */
+            "alwaysStrict": true, /* Ensure 'use strict' is always emitted. */
+            "skipLibCheck": true /* Skip type checking all .d.ts files. */
+      },
+}
