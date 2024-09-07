@@ -93,9 +93,13 @@ In your express routes you then call the `renderReact` method, passing in your v
 ```typescript {:copy}
 import MyView from "../views/MyView"
 
-const options : ReactResponseOptions = {}
-const properties : any = {}
-res.renderReact(MyView, properties, options )
+app.get('/', (req, res, next) => {
+      const options : ReactResponseOptions = {}
+      const properties : any = {}
+
+      res.renderReact(MyView, properties, options )
+})
+
 ```
 
  You'll notice that your properties are strongly typed according to your view.
@@ -106,14 +110,24 @@ If you want to override the default layout:
 
 ```typescript {:copy}
 import Layout2 from "../views/layouts/Layout2"
-res.renderReact(MyView, properties, {layout:Layout2} )
+import MyView from "../views/MyView"
+
+app.get('/', (req, res, next) => {
+      const properties : any = {}
+      res.renderReact(MyView, properties, {layout:Layout2} )
+})
 ```
 
 If you want to remove the default layout at the route level you can use the `NoLayout` value.
 
 ```typescript {:copy}
 import NoLayout from 'tsx-express'
-res.renderReact(MyView, properties, {layout:NoLayout} )
+import MyView from "../views/MyView"
+
+app.get('/', (req, res, next) => {
+      const properties : any = {}
+      res.renderReact(MyView, properties, {layout:NoLayout} )
+})
 ```
 
 I have deliberately not implemented contexts and other features to keep this as a simple view engine similar to other view engines.
@@ -139,6 +153,7 @@ npm run dev
 > **NOTE** - The demo project references the local component not the npm package.
 
 ## Contributing
+
 
 [version]: https://badgen.net/github/tag/danielbayley80/tsx-express?label=Version&color=0f6bff
 [license]: https://badgen.net/github/license/danielbayley80/tsx-express?label=License&color=0f6bff
