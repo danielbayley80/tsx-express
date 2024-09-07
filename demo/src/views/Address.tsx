@@ -1,4 +1,5 @@
 import React, { ReactElement} from 'react'
+import { IViewProps } from 'tsx-express';
 
 
 export interface AddressViewProps {

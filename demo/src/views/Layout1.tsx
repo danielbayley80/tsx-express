@@ -4,6 +4,7 @@ import { ILayoutProps } from 'tsx-express'
 
 import Header from './Header'
 
+
 export default function MyLayout1({ children, locals }: ILayoutProps): ReactElement {
 
       return (

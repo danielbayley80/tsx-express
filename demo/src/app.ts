@@ -28,7 +28,7 @@ initializeReactRenderer(app, {defaultLayout:Layout1} )
 
 app.get('/', (req, res, next) => {
       res.locals.title= "Address Layout One"
-      res.renderReact(Detail1, {})
+      res.renderReact(Detail1)
       next();
 })
 
@@ -38,7 +38,7 @@ app.get('/', (req, res, next) => {
 app.get('/layout2', (req, res, next) => {
    
       res.locals.title= "Address Layout Two"
-      res.renderReact(Detail1,{},{layout:Layout2})
+      res.renderReact(Detail1, undefined,{layout:Layout2})
       next();
 })
 
