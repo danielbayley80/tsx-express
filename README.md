@@ -51,7 +51,7 @@ export default function MyLayout({ children, locals }: ILayoutProps): ReactEleme
 Similarly you may want to pass locals to your views. Again you can use the `IViewProps` interface, extend this, or create your own.
 
 ```typescript {:copy}
-export default function MyLayout({ locals }: IViewProps): ReactElement {
+export default function MyView({ locals }: IViewProps): ReactElement {
       return (
       <>
 
@@ -140,5 +140,5 @@ npm run dev
 
 ## Contributing
 
-[version]: https://badgen.net/github/tag/danielbayley80/tsx-express?label=Version&color=1AD1A5
-[license]: https://badgen.net/github/license/danielbayley80/tsx-express?label=License&color=1AD1A5
+[version]: https://badgen.net/github/tag/danielbayley80/tsx-express?label=Version&color=0f6bff
+[license]: https://badgen.net/github/license/danielbayley80/tsx-express?label=License&color=0f6bff
