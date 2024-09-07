@@ -1,6 +1,6 @@
 {
   "name": "tsx-express-demo",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "A simple for React view engine for Express",
   "scripts": {
     "dev": "npm-run-all --parallel server tailwind",
