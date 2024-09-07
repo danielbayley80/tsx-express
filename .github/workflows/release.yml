@@ -37,7 +37,7 @@ jobs:
       - name: Create Git tag
         id: tag
         run: |
-          VERSION=$(node -p "require('./component/package.json').version")
+          VERSION=$(node -p "require('./package.json').version")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           git tag -a "v$VERSION" -m "Package release"
           git push origin "v$VERSION"
