@@ -34,6 +34,11 @@ jobs:
             cd component
             npm run test 
 
+      - name: Set Git committer identity
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
       - name: Create Git tag
         id: tag
         run: |
