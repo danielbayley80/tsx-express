@@ -2,11 +2,9 @@
       "name": "tsx-express",
       "version": "0.9.0",
       "description": "A simple React view engine for Express",
-
-      "scripts": {
-        "publish": "./publish.sh"
+      "publishConfig": {
+            "registry": "https://npm.pkg.github.com/"
       },
       "author": "Daniel Bayley",
       "license": "ISC"
-    }
-    
+}
