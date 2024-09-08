@@ -133,9 +133,9 @@ app.get('/', (req, res, next) => {
 When using HTMX it can be useful to render a route with and without a default layout so it can be loaded directly or from HTMX. You can achieve this by detecting the `hx-request` header and removing your default layout.
 
 ```typescript {:copy}
-      let options : any = undefined;
-      if (req.headers["hx-request"]) options = {layout : 'noLayout' }
-      res.renderReact(MyView,undefined,options)
+let options : any = undefined;
+if (req.headers["hx-request"]) options = {layout : 'noLayout' }
+res.renderReact(MyView,undefined,options)
 ```
 
 I have deliberately not implemented contexts and other features to keep this as a simple view engine similar to other view engines.
