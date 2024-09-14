@@ -16,9 +16,6 @@ jobs:
           node-version: '20' # Specify your Node.js version
           registry-url: "https://registry.npmjs.org"
 
-      - name: Copy README.md to Component Directory
-        run: cp README.md component/README.md
-
       - name: Install dependencies
         run: |
           cd component

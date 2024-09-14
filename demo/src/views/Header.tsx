@@ -19,12 +19,8 @@ export default function View({ title, color }: HeaderViewProps): ReactElement {
                               TSX-EXPRESS DEMO
                         </div>
                   </header>
-                  <div className='max-w-sm mx-auto' >
-                        <div className='bg-base-200 p-4'>
-                              <a href="/">Layout one</a> | <a href="/layout2">Layout two</a>
-                        </div>
-                        <h1 className='text-xl p-4'>{title}</h1>
-                  </div>
+
+
             </>
       )
 }

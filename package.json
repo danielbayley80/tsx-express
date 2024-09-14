@@ -1,6 +1,6 @@
 {
       "name": "tsx-express",
-      "version": "0.9.1",
+      "version": "0.9.2",
       "description": "A simple React view engine for Express",
 
       "publishConfig": {

@@ -17,9 +17,10 @@ export default function MyLayout1({ children, locals }: ILayoutProps): ReactElem
                   </head>
                   <body className="w-full  h-full  items-center justify-center " hx-headers='{"Accept" : "text/html"}'>
 
-                        <Header title={locals.title} color='bg-green-700' />
+                        <Header title="Main layout two" color='bg-blue-700' />
 
-                         <div className='max-w-sm mx-auto bg-base-200 p-4'>
+                         <div className='max-w-sm mx-auto bg-base-200'>
+                              <h1 className='my-4 text-xl'>This is layout two</h1>
                               {children}
                         </div>
 

@@ -1,6 +1,6 @@
 {
   "name": "tsx-express",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Use React TSX views with Express",
   "type": "commonjs",
   "main": "dist/ReactViews.js",

@@ -4,6 +4,8 @@ import { initializeReactRenderer, ReactGlobalOptions } from 'tsx-express';
 
 import Layout1 from "./views/Layout1"
 import Layout2 from "./views/Layout2"
+import LayoutChild from "./views/LayoutChild"
+
 import Detail1, { AddressViewProps } from "./views/Address"
 import { generateRandomAddress } from './address';
  
@@ -26,6 +28,17 @@ app.use(express.static('./src/public'))
 initializeReactRenderer(app, {defaultLayout:Layout1} )
 
 
+/* 
+      setReactLayout can be used to set both the main and child layout.
+      this can be useful for using different layouts in particular parts of your 
+      app, when users login, etc.
+*/
+app.get('*', (req, res, next) => {
+      res.setReactLayouts("noLayout","noLayout")
+      next();
+})
+
+
 app.get('/', (req, res, next) => {
       res.locals.title= "Address Layout One"
       res.renderReact(Detail1)
@@ -36,7 +49,6 @@ app.get('/', (req, res, next) => {
       Here we override the default layout with Layout2
 */
 app.get('/layout2', (req, res, next) => {
-   
       res.locals.title= "Address Layout Two"
       res.renderReact(Detail1, undefined,{layout:Layout2})
       next();
@@ -49,10 +61,8 @@ app.get('/layout2', (req, res, next) => {
 */
 
 app.get('/address', (req, res, next) => {
-
       const props : AddressViewProps = generateRandomAddress();
-
-      res.renderReact(Detail1, props, {layout:'noLayout'})
+      res.renderReact(Detail1, props, {layout:'noLayout', childLayout:'noLayout'})
       next();
 })
 

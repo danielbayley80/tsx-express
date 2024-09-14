@@ -86,3 +86,26 @@ describe('renderReact with custom layout', () => {
               .expect('<div class="custom"><div>Hello World</div></div>');
       });
   });
+
+
+  describe('setReactLayouts removing layout', () => {
+      let app: Express;
+  
+      beforeEach(() => {
+          app = express();
+          initializeReactRenderer(app, {defaultLayout:Layout1});
+      });
+  
+      it('should render without layout', async () => {
+
+          app.get('/', (req: Request, res: Response) => {
+               res.setReactLayouts("noLayout","noLayout")
+               res.renderReact(HelloWorld, {} );
+          });
+  
+          await request(app)
+              .get('/')
+              .expect(200)
+              .expect('<div>Hello World</div>');
+      });
+  });

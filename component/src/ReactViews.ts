@@ -2,11 +2,13 @@ import { Express, Response } from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
+export type ReactLayout<P = any> = React.FC<P> | NoLayout;
 
 declare global {
       namespace Express {
           interface Response {
               renderReact: <P>(component: React.FC<P>, props?: P, options?: ReactResponseOptions) => void;
+              setReactLayouts: <P>(childLayout?: ReactLayout ,layout?: ReactLayout) => void;
           }
       }
   }
@@ -29,7 +31,8 @@ export type NoLayout = "noLayout";
  * Global options for every request.
  */
 export interface ReactGlobalOptions {
-      defaultLayout?: React.FC<any>;       // adds a default layout to all requests.
+      defaultLayout?: ReactLayout;       // adds a default layout to all requests.
+      defaultChildLayout?: ReactLayout;       // adds a default layout to all requests.
 }
 
 /**
@@ -37,6 +40,7 @@ export interface ReactGlobalOptions {
  */
 export interface ReactResponseOptions {
       layout?: React.FC<any> | NoLayout;      // overrides the layout for this request with either a layout or removing the default.
+      childLayout?: React.FC<any> | NoLayout;
 }
 
 /**
@@ -45,6 +49,11 @@ export interface ReactResponseOptions {
 export function initializeReactRenderer(app: Express, options?: ReactGlobalOptions) {
       app.use((req, res, next) => {
             res.renderReact = getRenderReact(res, options);
+            res.setReactLayouts = (childLayout?: ReactLayout,layout?: ReactLayout) => {
+                  if (!options) { options = {} }
+                  if (childLayout) options.defaultChildLayout = childLayout;
+                  if (layout) options.defaultLayout = layout;
+            };
             next();
       })
 }
@@ -76,6 +85,9 @@ export function getHtml(
       let layout = responseOptions?.layout || globalOptions?.defaultLayout
       if (layout === "noLayout") layout = undefined;
 
+      let layoutChild = responseOptions?.childLayout || globalOptions?.defaultChildLayout
+      if (layoutChild === "noLayout") layoutChild = undefined;
+
       if (!isValidLayout(layout)) return "<!-- Invalid layout -->"
       if (!isValidView(view)) return "<!-- Invalid view -->"
 
@@ -83,6 +95,7 @@ export function getHtml(
 
             // create the content element from the component and properties.
             let element = React.createElement(view, props)
+            if (layoutChild) {  element = React.createElement(layoutChild, props, element) }
             if (layout) {  element = React.createElement(layout, props, element) }
             const html = ReactDOMServer.renderToString(element);
             

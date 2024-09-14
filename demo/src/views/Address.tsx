@@ -13,7 +13,8 @@ export interface AddressViewProps {
 export default function View({ address1, address2, address3, postalCode }: AddressViewProps ): ReactElement {
 
       return (
-            <form className="w-full" id="form">
+            <form className="w-full bg-blue-100 p-4" id="form">
+                  <h2 className='mb-4'>This is the address view</h2>
                   <div className="mb-5">
                         <label htmlFor="address1" className="block mb-2 text-sm font-medium text-gray-900 w-64">Address 1</label>
                         <input type="text" id="address1" placeholder=""   defaultValue={address1}
