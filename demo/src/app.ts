@@ -34,7 +34,7 @@ initializeReactRenderer(app, {defaultLayout:Layout1} )
       app, when users login, etc.
 */
 app.get('*', (req, res, next) => {
-      res.setReactLayouts("noLayout","noLayout")
+     // res.setReactLayouts("noLayout","noLayout")
       next();
 })
 
