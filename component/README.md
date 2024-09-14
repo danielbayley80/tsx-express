@@ -149,12 +149,11 @@ export default function MyView({ locals }: IViewProps): ReactElement {
 
 ## HTMX Tip
 
-When using HTMX it can be useful to render a route with and without layouts so it can be loaded directly or from an HTMX. 
+When using HTMX it can be useful to render a route with and without layouts so it can be loaded directly or from an HTMX request. 
 
 You can achieve this by detecting various HTMX headers such as `hx-request` and removing your layouts as required.
 
 ```typescript {:copy}
-let options : any = undefined;
 if (req.headers["hx-request"]) options = {layout:'noLayout', childLayout:'noLayout'}
 res.renderReact(MyView,undefined,options)
 ```
@@ -169,7 +168,6 @@ app.get('*', (req, res, next) => {
       next();
 })
 ```
-
 
 [version]: https://badgen.net/github/tag/danielbayley80/tsx-express?label=Version&color=0f6bff
 [license]: https://badgen.net/github/license/danielbayley80/tsx-express?label=License&color=0f6bff
