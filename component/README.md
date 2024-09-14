@@ -9,7 +9,7 @@ A simple React view engine for Express
 
 I prefer old school approach to websites, where the server is responsible for state management and serves up HTML content with a sprinkling of interactivity added on the front end. I also like type safety, intellisense, etc. More recently I've been using HTMX and looking for a new view engine. I've used Handlebars, ejs, etc. but none really fit the bill. 
 
-The main things I wanted to achieve were :
+My main design goals were :
 
 - Similar approach as HBS / EJS
 - Specify a default / global master layout
@@ -23,7 +23,7 @@ Enter tsx-express, a simple React view engine for express.
 
 > **DISCLAIMER** - I am not a professional developer, this is a side/weekend project.
 
-Contexts and other features are not implemented to keep this as a simple view engine similar to other view engines.
+Contexts and other features are not implemented to keep this as a simple view engine, similar to other view engines.
 
 ## Getting started
 

@@ -55,7 +55,7 @@ app.get('/layout2', (req, res, next) => {
 })
 ```
 
-Finally there is an address route that responds with the address view and removes and layout or child layout. This is so t ![typed renderReact method](/resources/demo.webp)he content can be loaded in an HTML element without the layouts using HTMX.
+Finally there is an address route that responds with the address view and removes and layout or child layout. This is so the content can be loaded in an HTML element by HTMX without the layouts.
 
 ```typescript {:copy}
 app.get('/address', (req, res, next) => {
