@@ -20,7 +20,7 @@ npm run dev
 Firstly there is some basic setup along with the React views setup. In this example we're setting a default layout and no child layout.
 
 ```typescript {:copy}
-initializeReactRenderer(app, {defaultLayout:Layout1} )
+app.use(tsxExpress( { defaultLayout:Layout1 } ))
 ```
 
 A generic route uses `setReactLayouts` to add a child layout. It accepts both child and main layout.

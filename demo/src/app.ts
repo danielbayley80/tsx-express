@@ -1,5 +1,5 @@
 import express from 'express';
-import { initializeReactRenderer, ReactGlobalOptions } from 'tsx-express';
+import {  tsxExpress } from 'tsx-express';
 
 
 import Layout1 from "./views/Layout1"
@@ -24,9 +24,8 @@ const app = express();
 
 app.use(express.static('./src/public'))
 
-/* */
-initializeReactRenderer(app, {defaultLayout:Layout1} )
-
+/* Register tsxExpress with any options */
+app.use(tsxExpress( { defaultLayout:Layout1 } ))
 
 /* 
       setReactLayout can be used to set both the main and child layout.

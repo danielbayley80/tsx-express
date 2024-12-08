@@ -3,6 +3,13 @@
 
 A simple React view engine for Express 
 
+## Version 0.9.3
+
+- Added 'showView' helper function
+- Added standard app.use pattern
+- DEPRECATED initializeReactRenderer
+- Updated dependencies
+
 ## Version 0.9.2
 
 - Added `defaultChildLayout` property to `ReactGlobalOptions`.

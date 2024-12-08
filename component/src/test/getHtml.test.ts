@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactGlobalOptions, ReactResponseOptions, getHtml, initializeReactRenderer } from "../ReactViews";
+import { ReactGlobalOptions, ReactResponseOptions, getHtml, tsxExpress} from "../ReactViews";
 import { HelloWorld, Layout1, LayoutGlobal, mockProps, ViewError, ViewLocals, ViewProps } from "./mocks";
 
 describe('getHtml', () => {

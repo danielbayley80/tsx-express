@@ -37,16 +37,16 @@ npm i tsx-express
 
 ## App setup
 
-Setup express as normal and use `initializeReactRenderer` helper method in your main application file passing in your express `app` and optional `ReactGlobalOptions` options. ReactGlobalOptions allows you to specify both a default and child layout.
+Setup express as normal and use `tsxExpress` middleware method in your main application file passing in  optional `ReactGlobalOptions` options. ReactGlobalOptions allows you to specify both a default and child layout.
 
 ```typescript {:copy}
 import express from 'express';
-import { initializeReactRenderer } from 'tsx-express';
+import {  tsxExpress } from 'tsx-express';
 import Layout1 from "../views/layouts/Layout1"
 
 const app = express();
 
-initializeReactRenderer(app, {defaultLayout:Layout1});
+app.use(tsxExpress( { defaultLayout:Layout1 } ));
 ```
 
 ## Route setup

@@ -2,16 +2,17 @@
  
 
 import express, { Express, Request, Response } from 'express';
-import { initializeReactRenderer } from './../ReactViews';
+import {  tsxExpress } from './../ReactViews';
 import request from 'supertest';
 import {HelloWorld, Layout1, ViewLocals} from './mocks'
 
-describe('initializeReactRenderer', () => {
+describe('tsxExpress', () => {
     let app: Express;
 
     beforeEach(() => {
         app = express();
-        initializeReactRenderer(app);
+        app.use(tsxExpress());
+        
         app.get('/', (req: Request, res: Response) => {
             res.renderReact(HelloWorld,null)
 
@@ -33,7 +34,7 @@ describe('renderReact', () => {
 
     beforeEach(() => {
         app = express();
-        initializeReactRenderer(app);
+        app.use(tsxExpress());
     });
 
     it('should render a React component and send the HTML as response', async () => {
@@ -71,7 +72,7 @@ describe('renderReact with custom layout', () => {
   
       beforeEach(() => {
           app = express();
-          initializeReactRenderer(app);
+          app.use(tsxExpress());
       });
   
       it('should render with a custom layout', async () => {
@@ -93,7 +94,7 @@ describe('renderReact with custom layout', () => {
   
       beforeEach(() => {
           app = express();
-          initializeReactRenderer(app, {defaultLayout:Layout1});
+          app.use(tsxExpress({defaultLayout:Layout1}));
       });
   
       it('should render without layout', async () => {

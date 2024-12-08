@@ -1,4 +1,4 @@
-import { Express, Response } from 'express';
+import { Express, NextFunction, Request, Response } from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
@@ -46,17 +46,20 @@ export interface ReactResponseOptions {
 /**
  * Register the renderReact function
  */
-export function initializeReactRenderer(app: Express, options?: ReactGlobalOptions) {
-      app.use((req, res, next) => {
-            res.renderReact = getRenderReact(res, options);
-            res.setReactLayouts = (childLayout?: ReactLayout,layout?: ReactLayout) => {
-                  if (!options) { options = {} }
-                  if (childLayout) options.defaultChildLayout = childLayout;
-                  if (layout) options.defaultLayout = layout;
-            };
-            next();
-      })
-}
+
+export function tsxExpress(options?: ReactGlobalOptions) {
+      return (req: Request, res: Response, next: NextFunction) => {
+        // Add methods to the response object
+        res.renderReact = getRenderReact(res, options);
+        res.setReactLayouts = (childLayout?: ReactLayout, layout?: ReactLayout) => {
+          if (!options) {   options = {};  }
+          if (childLayout) options.defaultChildLayout = childLayout;
+          if (layout) options.defaultLayout = layout;
+        };
+    
+        next(); // Proceed to the next middleware
+      };
+    }
 
 /**
  * Sets up the render function
@@ -108,6 +111,16 @@ export function getHtml(
             return '<!-- Rendering error -->';
       }
 
+}
+
+ 
+
+export function showView(view:React.FC<any>) {
+      const  showView = function (req: Request, res: Response) {
+             return res.renderReact(view,{locals:res.locals});
+     
+      }
+      return showView;
 }
 
 function isValidLayout(view:any) {
