@@ -113,12 +113,9 @@ export function getHtml(
 
 }
 
- 
-
 export function showView(view:React.FC<any>) {
       const  showView = function (req: Request, res: Response) {
-             return res.renderReact(view,{locals:res.locals});
-     
+             return res.renderReact(view);
       }
       return showView;
 }

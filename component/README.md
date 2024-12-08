@@ -147,6 +147,20 @@ export default function MyView({ locals }: IViewProps): ReactElement {
 }
 ```
 
+## Show view helper
+
+The `showView` helper method makes it quick and easy to render a view when making a simple get request where only locals are required.
+
+```typescript {:copy}
+import MyView from "../views/MyView"
+
+const router = express.Router();
+                      
+router.get('/myPage', showView(MyView));  
+
+```
+
+
 ## HTMX Tip
 
 When using HTMX it can be useful to render a route with and without layouts so it can be loaded directly or from an HTMX request. 
